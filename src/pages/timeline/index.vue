@@ -1,17 +1,17 @@
 <template lang="jade">
-  #timeline 4w1
+  #timeline
+    c-header
 </template>
 
 
 <script lang="coffee">
   module.exports =
-    data: ->
-      email: ''
-      pass:  ''
+    components:
+      'c-header': require('./header').default
 </script>
 
 
 <style lang="less" scoped>
-  #index{
+  #timeline{
   }
 </style>

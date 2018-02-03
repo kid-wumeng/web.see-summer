@@ -1,5 +1,5 @@
 <template lang="jade">
-  #timeline 4w1
+  #timeline
 </template>
 
 
@@ -12,6 +12,6 @@
 
 
 <style lang="less" scoped>
-  #index{
+  #timeline{
   }
 </style>

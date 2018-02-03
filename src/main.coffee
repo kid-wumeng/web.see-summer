@@ -1,4 +1,5 @@
 window.Vue = require('vue').default
+window.$   = require('webpack-zepto')
 
 
 
@@ -34,6 +35,7 @@ Vue.use({
     window.includes = Vue.prototype.includes = require('./utils').includes
     window.api      = Vue.prototype.api      = require('./utils').api
     window.cdn      = Vue.prototype.cdn      = require('./utils').cdn
+    window.trim     = Vue.prototype.trim      = require('./utils').trim
 })
 
 
@@ -41,8 +43,9 @@ Vue.use({
 ##################################################
 ## 全局组件
 ##################################################
-# Vue.component('row',    require('components/@/row'))
-# Vue.component('column', require('components/@/column'))
+Vue.component('row',       require('components/row').default)
+Vue.component('column',    require('components/column').default)
+Vue.component('text-area', require('components/text-area').default)
 
 
 ##################################################

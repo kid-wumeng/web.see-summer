@@ -11,3 +11,7 @@ exports.api = (path) ->
 
 exports.cdn = (path) ->
   console.log 333
+
+
+exports.trim = (string) ->
+  return string.replace(/^\s+|\s+$/g, '')
