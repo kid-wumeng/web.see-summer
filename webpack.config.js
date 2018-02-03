@@ -1,8 +1,12 @@
 var path = require('path')
 var webpack = require('webpack')
 
+function resolve (dir) {
+  return path.join(__dirname, dir)
+}
+
 module.exports = {
-  entry: './src/main.js',
+  entry: './src/main.coffee',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
@@ -10,6 +14,11 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.coffee$/,
+        loader: 'coffee-loader',
+        exclude: /node_modules/
+      },
       {
         test: /\.css$/,
         use: [
@@ -21,14 +30,10 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           loaders: {
+            js: 'babel-loader'
           }
           // other vue-loader options go here
         }
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -41,9 +46,14 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+      'vue$': 'vue/dist/vue.esm.js',
+      'assets':        resolve('src/assets'),
+      'components':    resolve('src/components'),
+      'components.h5': resolve('src/components.h5'),
+      'pages':         resolve('src/pages'),
+      'pages.h5':      resolve('src/pages.h5')
     },
-    extensions: ['*', '.js', '.vue', '.json']
+    extensions: ['.js', '.vue', '.json', '.coffee']
   },
   devServer: {
     historyApiFallback: true,
@@ -65,14 +75,24 @@ if (process.env.NODE_ENV === 'production') {
         NODE_ENV: '"production"'
       }
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: false
-      }
-    }),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   sourceMap: true,
+    //   compress: {
+    //     warnings: false
+    //   }
+    // }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
+    })
+  ])
+}
+
+else{
+  module.exports.plugins = (module.exports.plugins || []).concat([
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"development"'
+      }
     })
   ])
 }
