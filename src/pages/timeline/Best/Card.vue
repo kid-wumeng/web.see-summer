@@ -1,7 +1,9 @@
 <template lang="jade">
   Row.Card.-between
     .left
-      TextArea.content(text="停止所有的时钟，切断电话，\n给狗一块浓汁的骨头，让他别叫，\n黯哑了钢琴，随着低沉的鼓")
+      .area
+        TextArea.desc.-auto(text="普京好沧桑")
+      .author © Hans-Wolfgang
     .right
       .photo
 </template>
@@ -15,16 +17,49 @@
 
 <style lang="less" scoped>
   .Card{
-    width: 800px;
-    height: 300px;
+    width: 720px;
+    height: 360px;
     background-color: #FFF;
-    .photo{
-      width: 300px;
-      height: 300px;
-      background-image: url(~images/test-best.jpg);
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
+    padding: 20px;
+    margin-bottom: 72px;
+    .left{
+      flex: auto;
+      align-self: stretch;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      .area{
+        flex: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 60px;
+        .desc{
+          line-height: 30px;
+          text-align: center;
+          font-size: 16px;
+          font-weight: 600;
+          color: #262626;
+        }
+      }
+      .author{
+        margin-bottom: 16px;
+        font-size: 12px;
+        color: #A2AEBA;
+      }
+    }
+    .right{
+      .photo{
+        width: 360px;
+        height: 360px;
+        background-image: url(~images/test-best.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
     }
   }
 </style>

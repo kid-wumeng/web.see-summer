@@ -74,10 +74,10 @@
 
 <style lang="less">
   .TextArea{
-    line-height: 20px;
+    line-height: 22px;
     text-align: justify;
     font-size: 13px;
-    color: #273340;
+    color: #262626;
     .paragraph{
       line-height: inherit;
       text-align: inherit;

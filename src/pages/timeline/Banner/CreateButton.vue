@@ -15,10 +15,10 @@
     display: inline-block;
     margin-top: 120px;
     padding: 16px 36px;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 20px;
     color: #FFF;
-    border: 3px solid #FFF;
+    border: 1px solid #FFF;
     border-radius: 50px;
     cursor: pointer;
     opacity: 0.6;

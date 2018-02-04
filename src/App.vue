@@ -8,13 +8,13 @@
 
 <script lang="coffee">
   module.exports =
-    
+
     metaInfo: ->
       titleTemplate: (title) ->
         if title
-          return "#{title} - 知夏"
+          return "#{title} - 时之形"
         else
-          return "知夏"
+          return "时之形"
 
     computed:
       key: ->
