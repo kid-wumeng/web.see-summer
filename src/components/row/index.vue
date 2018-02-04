@@ -1,5 +1,5 @@
 <template lang="jade">
-  .row(@click="$emit('click')")
+  .Row(@click="$emit('click')")
     slot
 </template>
 
@@ -9,7 +9,7 @@
 
 
 <style lang="less" scoped>
-  .row{
+  .Row{
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;

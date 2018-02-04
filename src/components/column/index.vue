@@ -1,5 +1,5 @@
 <template lang="jade">
-  .column(@click="$emit('click')")
+  .Column(@click="$emit('click')")
     slot
 </template>
 
@@ -9,7 +9,7 @@
 
 
 <style lang="less" scoped>
-  .column{
+  .Column{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

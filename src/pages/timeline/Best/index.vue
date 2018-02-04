@@ -1,19 +1,17 @@
 <template lang="jade">
-  #timeline
-    Banner
-    Best
+  .Best
+    Card
 </template>
 
 
 <script lang="coffee">
   module.exports =
     components:
-      'Banner': require('./Banner').default
-      'Best':   require('./Best').default
+      'Card': require('./Card').default
 </script>
 
 
 <style lang="less" scoped>
-  #timeline{
+  .Best{
   }
 </style>

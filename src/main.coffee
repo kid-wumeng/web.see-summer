@@ -32,10 +32,13 @@ Vue.use(require('vue-lazyload'))
 
 Vue.use({
   install: (Vue) ->
-    window.includes = Vue.prototype.includes = require('./utils').includes
-    window.api      = Vue.prototype.api      = require('./utils').api
-    window.cdn      = Vue.prototype.cdn      = require('./utils').cdn
-    window.trim     = Vue.prototype.trim      = require('./utils').trim
+    window.includes    = Vue.prototype.includes    = require('./utils').includes
+    window.api         = Vue.prototype.api         = require('./utils').api
+    window.cdn         = Vue.prototype.cdn         = require('./utils').cdn
+    window.trim        = Vue.prototype.trim        = require('./utils').trim
+    window.padStart    = Vue.prototype.padStart    = require('./utils').padStart
+    window.formatDate  = Vue.prototype.formatDate  = require('./utils').formatDate
+    window.displayDate = Vue.prototype.displayDate = require('./utils').displayDate
 })
 
 
@@ -43,9 +46,9 @@ Vue.use({
 ##################################################
 ## 全局组件
 ##################################################
-Vue.component('row',       require('components/row').default)
-Vue.component('column',    require('components/column').default)
-Vue.component('text-area', require('components/text-area').default)
+Vue.component('Row',      require('components/Row').default)
+Vue.component('Column',   require('components/Column').default)
+Vue.component('TextArea', require('components/TextArea').default)
 
 
 ##################################################

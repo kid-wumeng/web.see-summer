@@ -1,5 +1,5 @@
 <template lang="jade">
-  .text-area(v-if="text", :class="textClass")
+  .TextArea(v-if="text", :class="textClass")
     .paragraph(v-for="paragraph in paragraphs", :style="paragraphStyle", v-html="paragraph", @click="click")
 </template>
 
@@ -73,7 +73,7 @@
 
 
 <style lang="less">
-  .text-area{
+  .TextArea{
     line-height: 20px;
     text-align: justify;
     font-size: 13px;
@@ -91,7 +91,7 @@
       height: 12px;
     }
   }
-  .text-area.-clickable{
+  .TextArea.-clickable{
     cursor: pointer;
   }
 </style>
