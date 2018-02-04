@@ -4,7 +4,7 @@
     .wrap
       .slogan 你的时光胶囊
       .slogan-desc 如果每天只拍一张相片，你会留住哪个瞬间？
-      CreateButton
+      Create
     DropdownHint
 </template>
 
@@ -15,7 +15,7 @@
 
   module.exports =
     components:
-      'CreateButton': require('./CreateButton').default
+      'Create':       require('./Create').default
       'DropdownHint': require('components/DropdownHint').default
 
     mounted: ->
@@ -44,6 +44,7 @@
     }
     .wrap{
       position: absolute;
+      margin-top: -16px;
       text-align: center;
       pointer-events: none;
       .slogan{

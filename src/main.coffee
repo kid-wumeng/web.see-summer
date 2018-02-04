@@ -51,6 +51,20 @@ Vue.component('Column',   require('components/Column').default)
 Vue.component('TextArea', require('components/TextArea').default)
 
 
+
+##################################################
+## 状态树
+##################################################
+Vuex = require('vuex').default
+Vue.use(Vuex)
+
+store = new Vuex.Store({
+  strict: dev
+  modules: require('./store-modules')
+})
+
+
+
 ##################################################
 ## 路由
 ##################################################
@@ -80,7 +94,7 @@ else
 
 new Vue({
   el: '#app'
-  # store: store
+  store: store
   router: router
   render: (h) => h(App)
 })
