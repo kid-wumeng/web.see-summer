@@ -1,13 +1,18 @@
 <template lang="jade">
   .Create
-    .button 珍藏 {{ date }} 的片刻
+    .button(@click="commit('create-memory-modal/SHOW')") 珍藏 {{ date }} 的片刻
+
+    CreateMemoryModal(:open="open")
 </template>
 
 
 <script lang="coffee">
   module.exports =
     components:
-      'Modal': require('components/Modal').default
+      'CreateMemoryModal': require('components/CreateMemoryModal').default
+
+    data: ->
+      open: false
 
     computed:
       date: -> @formatDate(new Date(), 'YY/MM/DD')
@@ -30,7 +35,6 @@
       border-radius: 50px;
       cursor: pointer;
       transition: all 0.2s linear;
-      pointer-events: all;
       user-select: none;
       &:hover{
         color: rgba(255, 255, 255, 1);

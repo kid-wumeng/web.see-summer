@@ -39,22 +39,25 @@
       position: absolute;
       top: 0;
       left: 0;
+      z-index: 1;
       width: 100%;
       height: 100%;
     }
     .wrap{
       position: absolute;
+      z-index: 2;
       margin-top: -16px;
       text-align: center;
-      pointer-events: none;
       .slogan{
         font-size: 56px;
         font-weight: 600;
+        user-select: none;
       }
       .slogan-desc{
         margin-top: 26px;
         font-size: 26px;
         font-weight: 600;
+        user-select: none;
       }
     }
     .DropdownHint{

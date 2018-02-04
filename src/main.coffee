@@ -25,34 +25,6 @@ else
 
 
 ##################################################
-## 插件
-##################################################
-Vue.use(require('vue-meta'))
-Vue.use(require('vue-lazyload'))
-
-Vue.use({
-  install: (Vue) ->
-    window.includes    = Vue.prototype.includes    = require('./utils').includes
-    window.api         = Vue.prototype.api         = require('./utils').api
-    window.cdn         = Vue.prototype.cdn         = require('./utils').cdn
-    window.trim        = Vue.prototype.trim        = require('./utils').trim
-    window.padStart    = Vue.prototype.padStart    = require('./utils').padStart
-    window.formatDate  = Vue.prototype.formatDate  = require('./utils').formatDate
-    window.displayDate = Vue.prototype.displayDate = require('./utils').displayDate
-})
-
-
-
-##################################################
-## 全局组件
-##################################################
-Vue.component('Row',      require('components/Row').default)
-Vue.component('Column',   require('components/Column').default)
-Vue.component('TextArea', require('components/TextArea').default)
-
-
-
-##################################################
 ## 状态树
 ##################################################
 Vuex = require('vuex').default
@@ -81,6 +53,37 @@ router = new Router({
   routes: routes
   scrollBehavior: (to, from, savedPosition) -> savedPosition ? {x: 0, y: 0}
 })
+
+
+
+##################################################
+## 插件
+##################################################
+Vue.use(require('vue-meta'))
+Vue.use(require('vue-lazyload'))
+
+Vue.use({
+  install: (Vue) ->
+    window.state       = Vue.prototype.state       = store.state
+    window.commit      = Vue.prototype.commit      = store.commit
+    window.dispatch    = Vue.prototype.dispatch    = store.dispatch
+    window.includes    = Vue.prototype.includes    = require('./utils').includes
+    window.api         = Vue.prototype.api         = require('./utils').api
+    window.cdn         = Vue.prototype.cdn         = require('./utils').cdn
+    window.trim        = Vue.prototype.trim        = require('./utils').trim
+    window.padStart    = Vue.prototype.padStart    = require('./utils').padStart
+    window.formatDate  = Vue.prototype.formatDate  = require('./utils').formatDate
+    window.displayDate = Vue.prototype.displayDate = require('./utils').displayDate
+})
+
+
+
+##################################################
+## 全局组件
+##################################################
+Vue.component('Row',      require('components/Row').default)
+Vue.component('Column',   require('components/Column').default)
+Vue.component('TextArea', require('components/TextArea').default)
 
 
 
