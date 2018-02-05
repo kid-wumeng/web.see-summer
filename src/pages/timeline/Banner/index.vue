@@ -43,17 +43,18 @@
       width: 100%;
       height: 100%;
     }
-    .wrap{
+    >.wrap{
       position: absolute;
       z-index: 2;
       margin-top: -16px;
-      text-align: center;
       .slogan{
+        text-align: center;
         font-size: 56px;
         font-weight: 600;
         user-select: none;
       }
       .slogan-desc{
+        text-align: center;
         margin-top: 26px;
         font-size: 26px;
         font-weight: 600;

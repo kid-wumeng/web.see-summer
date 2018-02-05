@@ -1,6 +1,6 @@
 <template lang="jade">
   transition(name="fade")
-    .Modal(v-show="open" @click.self="clickMask")
+    .Modal(v-if="open" @click.self="clickMask")
       slot
       .close(@click="$emit('close')")
         .icon.cancel
@@ -41,7 +41,10 @@
     z-index: 100;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     >.close{
       position: absolute;
       right: 0px;

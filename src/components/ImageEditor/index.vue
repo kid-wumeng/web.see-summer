@@ -1,17 +1,27 @@
 <template lang="jade">
-  .ImageEditor
+  Row.ImageEditor
+    PreviewArea(:upload-hint="uploadHint", :data-url="dataUrl" @select-image="selectImage")
+    FilterArea(v-if="dataUrl")
 </template>
 
 
 <script lang="coffee">
   module.exports =
     components:
-      'Modal': require('components/Modal').default
+      'PreviewArea': require('./PreviewArea').default
+      'FilterArea':  require('./FilterArea').default
 
     props:
-      'displayUploadHint':
-        type: Boolean
-        default: '上传相片'
+      'uploadHint':
+        type: String
+        default: 'UPLOAD PHOTO'
+
+    data: ->
+      dataUrl: ''
+
+    methods:
+      selectImage: (dataUrl) ->
+        @dataUrl = dataUrl
 </script>
 
 

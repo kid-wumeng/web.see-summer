@@ -74,6 +74,7 @@ Vue.use({
     window.padStart    = Vue.prototype.padStart    = require('./utils').padStart
     window.formatDate  = Vue.prototype.formatDate  = require('./utils').formatDate
     window.displayDate = Vue.prototype.displayDate = require('./utils').displayDate
+    window.readDataUrl = Vue.prototype.readDataUrl = require('./utils').readDataUrl
 })
 
 

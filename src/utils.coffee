@@ -5,16 +5,20 @@ exports.includes = (array=[], value) ->
   return false
 
 
+
 exports.api = (path) ->
   console.log 222
+
 
 
 exports.cdn = (path) ->
   console.log 333
 
 
+
 exports.trim = (string) ->
   return string.replace(/^\s+|\s+$/g, '')
+
 
 
 exports.padStart = (value, len, char) ->
@@ -24,6 +28,7 @@ exports.padStart = (value, len, char) ->
     value = char + value
     count--
   return value
+
 
 
 exports.formatDate = (date, format) ->
@@ -57,6 +62,7 @@ exports.formatDate = (date, format) ->
       when 'ss' then second
 
 
+
 exports.displayDate = (date) ->
   now          = new Date()
   milliSeconds = now.getTime() - date.getTime()
@@ -84,3 +90,12 @@ exports.displayDate = (date) ->
     return "#{days}天前"
 
   return @formatDate('YY-MM-DD', date)
+
+
+
+exports.readDataUrl = (file) ->
+  return new Promise (resolve) ->
+    reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onload = (e) ->
+      resolve(e.target.result)

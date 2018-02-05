@@ -1,6 +1,7 @@
 <template lang="jade">
   Modal.CreateMemoryModal(:open="state['create-memory-modal'].open" @close="commit('create-memory-modal/HIDE')")
-    ImageEditor
+    .wrap
+      ImageEditor
 </template>
 
 
@@ -28,5 +29,7 @@
 
 <style lang="less" scoped>
   .CreateMemoryModal{
+    .wrap{
+    }
   }
 </style>

@@ -9,7 +9,7 @@
 
 <style lang="less">
 
-  @keyframes anime
+  @keyframes animation
   {
     0%{
       transform: translateY(0);
@@ -38,6 +38,6 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    animation: anime 1s linear infinite;
+    animation: animation 1s linear infinite;
   }
 </style>
