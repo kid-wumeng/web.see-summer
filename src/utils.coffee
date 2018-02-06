@@ -99,3 +99,51 @@ exports.readDataUrl = (file) ->
     reader.readAsDataURL(file)
     reader.onload = (e) ->
       resolve(e.target.result)
+
+
+
+exports.imageZoomOut = (dataUrl, maxSize=+Infinity, square) ->
+  return new Promise (resolve) ->
+    image = new Image()
+    image.src = dataUrl
+    image.onload = ->
+
+      canvas  = document.createElement('canvas')
+      context = canvas.getContext('2d')
+
+      width  = image.width
+      height = image.height
+
+      maxSize = maxSize * dpr
+      ratio   = width / height
+
+      if(width > height)
+        if(width > maxSize)
+          width  = maxSize
+          height = maxSize / ratio
+      else
+        if(height > maxSize)
+          width  = maxSize * ratio
+          height = maxSize
+
+      width  = Math.ceil(width)
+      height = Math.ceil(height)
+
+      if(square)
+        imageSize = if image.width > image.height then image.height else image.width
+        size      = if width > height then height else width
+
+        canvas.width  = size
+        canvas.height = size
+
+        if(width > height)
+          context.drawImage(image, (image.width-image.height)/2, 0, imageSize, imageSize, 0, 0, size, size)
+        else
+          context.drawImage(image, 0, (image.height-image.width)/2, imageSize, imageSize, 0, 0, size, size)
+
+      else
+        canvas.width  = width
+        canvas.height = height
+        context.drawImage(image, 0, 0, width, height)
+
+      resolve(canvas.toDataURL())

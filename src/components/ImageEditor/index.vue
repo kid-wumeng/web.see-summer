@@ -1,7 +1,7 @@
 <template lang="jade">
   Row.ImageEditor
-    PreviewArea(:upload-hint="uploadHint", :data-url="dataUrl" @select-image="selectImage")
-    FilterArea(v-if="dataUrl")
+    PreviewArea(ref="previewArea", :upload-hint="uploadHint" @sure-size="sureSize" @select-image="selectImage")
+    FilterArea(v-if="rawDataUrl", :size="size", :raw-data-url="rawDataUrl" @select-filter="selectFilter")
 </template>
 
 
@@ -17,11 +17,18 @@
         default: 'UPLOAD PHOTO'
 
     data: ->
-      dataUrl: ''
+      size: 0
+      rawDataUrl: ''
 
     methods:
-      selectImage: (dataUrl) ->
-        @dataUrl = dataUrl
+      sureSize: (size) ->
+        @size = size
+
+      selectImage: (rawDataUrl) ->
+        @rawDataUrl = rawDataUrl
+
+      selectFilter: (i) ->
+        @$refs['previewArea'].renderByFilter(i)
 </script>
 
 
