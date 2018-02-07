@@ -8,7 +8,6 @@
 
 <script lang="coffee">
   module.exports =
-
     metaInfo: ->
       titleTemplate: (title) ->
         if title

@@ -137,9 +137,9 @@ exports.imageZoomOut = (dataUrl, maxSize=+Infinity, square) ->
         canvas.height = size
 
         if(width > height)
-          context.drawImage(image, (image.width-image.height)/2, 0, imageSize, imageSize, 0, 0, size, size)
+          context.drawImage(image, Math.ceil((image.width-image.height)/2), 0, imageSize, imageSize, 0, 0, size, size)
         else
-          context.drawImage(image, 0, (image.height-image.width)/2, imageSize, imageSize, 0, 0, size, size)
+          context.drawImage(image, 0, Math.ceil((image.height-image.width)/2), imageSize, imageSize, 0, 0, size, size)
 
       else
         canvas.width  = width

@@ -49,7 +49,7 @@
       position: absolute;
       right: 0px;
       top: 0px;
-      padding: 32px;
+      padding: 24px;
       cursor: pointer;
       opacity: 0.6;
       transition: opacity 0.2s linear;
@@ -57,8 +57,8 @@
         opacity: 1;
       }
       .icon.cancel{
-        width: 32px;
-        height: 32px;
+        width: 24px;
+        height: 24px;
       }
     }
   }

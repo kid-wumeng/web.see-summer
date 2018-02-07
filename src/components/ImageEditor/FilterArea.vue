@@ -3,7 +3,7 @@
     .filter(@click="$emit('select-filter', -1)")
       .wrap
         img(:src="dataUrl")
-        .name 原图
+        .name
     .filter(v-for="(filter, i) in filters", :key="i" @click="$emit('select-filter', i)")
       .wrap
         img(
@@ -28,39 +28,75 @@
 
     data: ->
       dataUrl: ''
+      renderCount: 0
 
     computed:
       areaStyle: ->
-        'height': @size + 42 + 'px'  # 42px是PreviewArea焦点框的padding+border-widrh
+        'height': @size + 40 + 'px'  # 40px是PreviewArea焦点框的padding
 
     created: ->
-      @dataUrl = await @imageZoomOut(@rawDataUrl, 100, true)
+      @dataUrl = await @imageZoomOut(@rawDataUrl, 120, true)
 
     methods:
       loadImage: (i) ->
+        self = @
         Caman "#image-editor-filter-area-image-#{i}", ->
           filters[i].func.call(@)
-          @render()
+          @render ->
+            self.renderCount++
+            if(self.renderCount is filters.length)
+              self.$emit('ready-filters')
 </script>
 
 
 <style lang="less" scoped>
   .FilterArea{
     align-self: stretch;
-    margin-left: 60px;
-    width: 300px;
+    margin-left: 100px;
+    box-sizing: border-box;
+    width: 300px + 12px + 36px;
     overflow: scroll;
-    display: flex;
-    flex-wrap: wrap;
-    canvas{
-      display: block;
-      max-width: 100px;
-      max-height: 100px;
-    }
-    img{
-      display: block;
-      max-width: 100px;
-      max-height: 100px;
+    .filter{
+      float: left;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      width: 100px;
+      background-color: #000;
+      padding: 6px;
+      margin-top: 6px;
+      margin-left: 6px;
+      &:nth-child(1),
+      &:nth-child(2),
+      &:nth-child(3){
+        margin-top: 0;
+      }
+      &:nth-child(3n+1){
+        margin-left: 0;
+      }
+      canvas{
+        display: block;
+        max-width: 100px;
+        max-height: 100px;
+      }
+      img{
+        display: block;
+        max-width: 100px;
+        max-height: 100px;
+        width: 100%;
+        height: 100%;
+      }
+      .name{
+        margin-top: 6px;
+        width: 100%;
+        height: 24px;
+        line-height: 24px;
+        text-align: center;
+        font-family: "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        color: #FFF;
+      }
     }
   }
 </style>

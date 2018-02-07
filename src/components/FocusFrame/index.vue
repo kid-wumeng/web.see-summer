@@ -44,6 +44,7 @@
   .FocusFrame{
     position: relative;
     box-sizing: border-box;
+    padding: 20px;
     .corner{
       position: absolute;
       width:  @corner-len;
