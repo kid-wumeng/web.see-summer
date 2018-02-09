@@ -16,7 +16,7 @@
     border-radius: 50%;
     border: 1px solid transparent;
     border-top-color: rgba(255, 255, 255, 0.6);
-    animation: spin 0.5s linear infinite;
+    animation: spin 0.6s linear infinite;
   }
   @keyframes spin {
     0%{

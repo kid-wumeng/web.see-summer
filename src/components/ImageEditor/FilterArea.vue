@@ -1,18 +1,19 @@
 <template lang="jade">
-  .FilterArea(v-if="dataUrl", :style="areaStyle")
-    .filter(@click="$emit('select-filter', -1)")
-      .wrap
-        img(:src="dataUrl")
-        .name
-    .filter(v-for="(filter, i) in filters", :key="i" @click="$emit('select-filter', i)")
-      .wrap
-        img(
-          :id="'image-editor-filter-area-image-' + i",
-          :src="dataUrl"
-          data-caman-hidpi-disabled="true"
-          @load="loadImage(i)"
-        )
-        .name {{ filter.name }}
+  .FilterArea(v-if="dataUrl")
+    .list(:style="listStyle")
+      .filter(@click="$emit('select-filter', -1)")
+        .wrap
+          img(:src="dataUrl")
+          .name RAW
+      .filter(v-for="(filter, i) in filters", :key="i" @click="$emit('select-filter', i)")
+        .wrap
+          img(
+            :id="'image-editor-filter-area-image-' + i",
+            :src="dataUrl"
+            data-caman-hidpi-disabled="true"
+            @load="loadImage(i)"
+          )
+          .name {{ filter.name }}
 </template>
 
 
@@ -31,8 +32,8 @@
       renderCount: 0
 
     computed:
-      areaStyle: ->
-        'height': @size + 40 + 'px'  # 40px是PreviewArea焦点框的padding
+      listStyle: ->
+        'width': (filters.length + 1) * (80 + 12) + (filters.length + 2) * 8 + 'px'
 
     created: ->
       @dataUrl = await @imageZoomOut(@rawDataUrl, 120, true)
@@ -50,52 +51,50 @@
 
 
 <style lang="less" scoped>
+
+  @size: 80px;
+  @padding: 6px;
+
   .FilterArea{
-    align-self: stretch;
-    margin-left: 100px;
-    box-sizing: border-box;
-    width: 300px + 12px + 36px;
-    overflow: scroll;
-    .filter{
-      float: left;
-      position: relative;
-      cursor: pointer;
-      overflow: hidden;
-      width: 100px;
-      background-color: #000;
-      padding: 6px;
-      margin-top: 6px;
-      margin-left: 6px;
-      &:nth-child(1),
-      &:nth-child(2),
-      &:nth-child(3){
-        margin-top: 0;
-      }
-      &:nth-child(3n+1){
-        margin-left: 0;
-      }
-      canvas{
-        display: block;
-        max-width: 100px;
-        max-height: 100px;
-      }
-      img{
-        display: block;
-        max-width: 100px;
-        max-height: 100px;
-        width: 100%;
-        height: 100%;
-      }
-      .name{
-        margin-top: 6px;
-        width: 100%;
-        height: 24px;
-        line-height: 24px;
-        text-align: center;
-        font-family: "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-        font-size: 12px;
-        font-weight: 400;
-        color: #FFF;
+    margin-top: 300px;
+    .list{
+      margin: 0 auto;
+      overflow: scroll;
+      .filter{
+        float: left;
+        position: relative;
+        cursor: pointer;
+        overflow: hidden;
+        padding: @padding;
+        width: @size;
+        background-color: #FFF;
+        margin-right: @padding;
+        &:first-child{
+          margin-left: @padding;
+        }
+        canvas{
+          display: block;
+          max-width: @size;
+          max-height: @size;
+        }
+        img{
+          display: block;
+          max-width: @size;
+          max-height: @size;
+          width: 100%;
+          height: 100%;
+        }
+        .name{
+          margin-top: @padding;
+          width: 100%;
+          height: 23px;
+          line-height: 24px;
+          text-align: center;
+          font-family: "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          color: #000;
+        }
       }
     }
   }

@@ -1,8 +1,6 @@
 <template lang="jade">
-  .FileSelector
-    .wrap(@click="click")
-      slot
-
+  .FileSelector(@click="click")
+    slot
     input(
       ref="input",
       type="file",
@@ -18,7 +16,7 @@
     props:
       'max':
         type: Number
-        default: 3 * 1024 * 1024
+        default: 10 * 1024 * 1024
       'multiple':
         type: Boolean
         default: false
@@ -51,11 +49,7 @@
 <style lang="less" scoped>
   .FileSelector{
     display: inline-block;
-    .wrap{
-      width: 100%;
-      display: block;
-      cursor: pointer;
-    }
+    cursor: pointer;
     input{
       display: none;
     }

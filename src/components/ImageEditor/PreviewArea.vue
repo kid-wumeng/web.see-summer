@@ -107,8 +107,11 @@
 <style lang="less" scoped>
   .PreviewArea{
     position: relative;
+    display: flex;
+    justify-content: center;
     .FocusFrame.-selected{
       position: relative;
+      display: inline-block;
       img{
         display: block;
         &:not(#image-editor-preview-area-image--1){

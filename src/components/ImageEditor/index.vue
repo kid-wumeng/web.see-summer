@@ -1,5 +1,5 @@
 <template lang="jade">
-  Row.ImageEditor
+  .ImageEditor
     PreviewArea(
       ref="previewArea",
       :upload-hint="uploadHint"
@@ -47,5 +47,6 @@
 
 <style lang="less" scoped>
   .ImageEditor{
+    overflow: scroll;
   }
 </style>
