@@ -61,6 +61,9 @@ html{
 .icon.check{
   background-image: url(~images/icon/check.png);
 }
+.icon.location{
+  background-image: url(~images/icon/location.png);
+}
 
 
 .-more{
@@ -79,4 +82,27 @@ html{
 }
 .-auto{
   flex: auto;
+}
+
+
+@font-face {
+  font-family: 'weather';
+  src: url('/static/weather.ttf?2018.02.11');
+  font-weight: normal;
+  font-style:  normal;
+}
+.icon-weather{
+  font-family: 'weather';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &.nil:before          {content: "\e900"}
+  &.sun:before          {content: "\e901"}
+  &.cloud:before        {content: "\e902"}
+  &.rain:before         {content: "\e903"}
+  &.rain-thunder:before {content: "\e904"}
+  &.rain-heavy:before   {content: "\e905"}
+  &.snow:before         {content: "\e906"}
+  &.snow-heavy:before   {content: "\e907"}
+  &.fog:before          {content: "\e908"}
 }

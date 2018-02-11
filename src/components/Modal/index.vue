@@ -1,8 +1,8 @@
 <template lang="jade">
   transition(name="fade")
-    .Modal(v-if="open" @click.self="clickMask")
+    .Modal(v-if="open", :style="modalStyle" @click.self="clickMask")
       slot
-      .close(@click="$emit('close')")
+      .close(v-if="!hideClose" @click="$emit('close')")
         .icon.cancel
 </template>
 
@@ -13,9 +13,20 @@
       'open':
         type: Boolean
         default: false
+      'hideClose':
+        type: Boolean
+        default: false
       'closeOnClickMask':
         type: Boolean
         default: false
+      'alpha':
+        type: Number
+        default: 0.7
+
+
+    computed:
+      modalStyle: ->
+        'backgroundColor': "rgba(0, 0, 0, #{@alpha})"
 
     watch:
       'open': (open) ->
@@ -41,7 +52,6 @@
     z-index: 100;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     justify-content: center;
     align-items: center;

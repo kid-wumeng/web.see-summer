@@ -2,10 +2,10 @@
   .Banner
     #particles-js
     .wrap
-      .slogan 你的时光胶囊
-      .slogan-desc 如果每天只拍一张相片，你会留住哪个瞬间？
+      .slogan(v-show="!creating") 你的时光胶囊
+      .slogan-desc(v-show="!creating") 如果每天只拍一张相片，你会留住哪个瞬间？
       Create
-    DropdownHint
+    DropdownHint(v-show="!creating")
 </template>
 
 
@@ -17,6 +17,9 @@
     components:
       'Create':       require('./Create').default
       'DropdownHint': require('components/DropdownHint').default
+
+    computed:
+      'creating': -> @state['create-memory-modal'].open
 
     mounted: ->
       $(@$el).height($(window).height())
